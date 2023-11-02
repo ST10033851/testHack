@@ -1,0 +1,29 @@
+{
+    "rewrites": [
+      {
+        "source": "/login",
+        "destination": "/functions/login"
+      },
+      {
+        "source": "/register",
+        "destination": "/functions/register"
+      },
+      {
+        "source": "/groceryList",
+        "destination": "/functions/groceryList"
+      },
+      {
+        "source": "/Mylist",
+        "destination": "/functions/Mylist"
+      },
+      {
+        "source": "/products",
+        "destination": "/functions/products"
+      },
+      {
+        "source": "/(.*)",
+        "destination": "/$1"
+      }
+    ]
+  }
+  
