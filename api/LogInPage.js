@@ -8,9 +8,15 @@ const crypto = require('crypto');
 
 app.use(bodyParser.urlencoded({extended: true}));
 
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect("mongodb+srv://bargainbasket:bargainbasket123@bargainbasketcluster.gq7cemq.mongodb.net/BargainBasketDB");
 
-const User = mongoose.model("User");
+const usersSchema = {
+  email: String,
+  username: String,
+  password: String
+}
+
+const User = mongoose.model("User", usersSchema);
 
 export default async (req, res) => {
   if (req.method !== "POST") {
