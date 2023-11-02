@@ -32,7 +32,7 @@ export default async (req, res) => {
       // Successful login
       // You can set cookies or session variables here if needed
 
-      res.writeHead(302, { Location: "/BargainBasket/Pages/HomePage.html" });
+      res.writeHead(302, { Location: "/Pages/HomePage.html" });
       res.end();
     } else {
       // Failed login
