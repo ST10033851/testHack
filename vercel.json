@@ -1,29 +1,4 @@
 {
-    "rewrites": [
-      {
-        "source": "/login",
-        "destination": "/BargainBasket/api/login"
-      },
-      {
-        "source": "/register",
-        "destination": "/functions/register"
-      },
-      {
-        "source": "/groceryList",
-        "destination": "/functions/groceryList"
-      },
-      {
-        "source": "/Mylist",
-        "destination": "/functions/Mylist"
-      },
-      {
-        "source": "/products",
-        "destination": "/functions/products"
-      },
-      {
-        "source": "/(.*)",
-        "destination": "/$1"
-      }
-    ]
-  }
+    "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
+}
   
