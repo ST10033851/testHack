@@ -2,7 +2,7 @@
     "rewrites": [
       {
         "source": "/login",
-        "destination": "/functions/login"
+        "destination": "/api/login"
       },
       {
         "source": "/register",
