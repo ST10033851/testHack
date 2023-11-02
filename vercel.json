@@ -2,7 +2,7 @@
     "rewrites": [
       {
         "source": "/login",
-        "destination": "/api/login"
+        "destination": "/BargainBasket/api/login"
       },
       {
         "source": "/register",
