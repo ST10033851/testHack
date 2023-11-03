@@ -6,7 +6,18 @@ const path = require('path');
 const session = require('express-session');
 const crypto = require('crypto');
 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'Pages', 'views'));
+
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.static(__dirname + '/Pages'));
+
+app.use(session({
+    secret: secretKey,
+    resave: false,
+    saveUninitialized: true,
+}));
 
 mongoose.connect("mongodb+srv://bargainbasket:bargainbasket123@bargainbasketcluster.gq7cemq.mongodb.net/BargainBasketDB");
 
@@ -35,7 +46,7 @@ export default async (req, res) => {
 
     try {
 
-        res.render('ProductsPage', {
+        res.render('products', {
             productsList: products,
             currentPage: page,
             hasNextPage: hasNextPage
