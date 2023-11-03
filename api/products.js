@@ -28,7 +28,7 @@ const usersSchema = {
 const User = mongoose.model("User", usersSchema);
 
 
-export default async (req, res) => {
+app.get('/login', (req, res) => {
     if (req.method !== "GET") {
         res.status(405).end("Method Not Allowed");
     }
@@ -37,9 +37,9 @@ export default async (req, res) => {
     const productsPerPage = 12;
 
     const skip = (page - 1) * productsPerPage;
-    const products = await Product.find({}).skip(skip).limit(productsPerPage);
+    const products = Product.find({}).skip(skip).limit(productsPerPage);
 
-    const totalProducts = await Product.countDocuments();
+    const totalProducts = Product.countDocuments();
     const hasNextPage = skip + products.length < totalProducts;
 
     try {
@@ -56,4 +56,4 @@ export default async (req, res) => {
         console.error(error);
         res.status(500).end("Internal Server Error");
     }
-};
+});
