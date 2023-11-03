@@ -11,6 +11,8 @@ app.set('views', path.join(__dirname, 'Pages', 'views'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.static(__dirname + '/Pages'));
+
 app.use(session({
     secret: secretKey,
     resave: false,
@@ -28,7 +30,7 @@ const usersSchema = {
 const User = mongoose.model("User", usersSchema);
 
 
-app.get('/login', (req, res) => {
+export default async (req, res) => {
     if (req.method !== "GET") {
         res.status(405).end("Method Not Allowed");
     }
@@ -37,9 +39,9 @@ app.get('/login', (req, res) => {
     const productsPerPage = 12;
 
     const skip = (page - 1) * productsPerPage;
-    const products = Product.find({}).skip(skip).limit(productsPerPage);
+    const products = await Product.find({}).skip(skip).limit(productsPerPage);
 
-    const totalProducts = Product.countDocuments();
+    const totalProducts = await Product.countDocuments();
     const hasNextPage = skip + products.length < totalProducts;
 
     try {
@@ -56,4 +58,4 @@ app.get('/login', (req, res) => {
         console.error(error);
         res.status(500).end("Internal Server Error");
     }
-});
+};
