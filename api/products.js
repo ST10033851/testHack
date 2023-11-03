@@ -11,8 +11,6 @@ app.set('views', path.join(__dirname, 'Pages', 'views'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(__dirname + '/Pages'));
-
 app.use(session({
     secret: secretKey,
     resave: false,
@@ -31,7 +29,7 @@ const User = mongoose.model("User", usersSchema);
 
 
 export default async (req, res) => {
-    if (req.method !== "POST") {
+    if (req.method !== "GET") {
         res.status(405).end("Method Not Allowed");
     }
 
@@ -46,7 +44,7 @@ export default async (req, res) => {
 
     try {
 
-        res.render('products', {
+        res.render('/products', {
             productsList: products,
             currentPage: page,
             hasNextPage: hasNextPage
