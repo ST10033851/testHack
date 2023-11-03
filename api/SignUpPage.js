@@ -29,13 +29,10 @@ export default async (req, res) => {
         username: req.body.username,
         password: req.body.password
     });
-    newUser.save();
-
-    const { email, username, password } = req.body;
 
     try {
 
-        newUser.save();
+        User.insertMany(newUser);
 
         res.writeHead(302, { Location: "/Pages/HomePage.html" });
         res.end();
